@@ -18,7 +18,7 @@ jobs:
 
       - uses: actions/setup-go@v6
         with:
-          go-version: stable
+          go-version-file: go.mod
 
       - name: Lint
         uses: golangci/golangci-lint-action@v9
@@ -43,7 +43,7 @@ jobs:
       # use the version of the yaegi/v2 module set in .github/plugincheck/go.mod.
       - uses: actions/setup-go@v6
         with:
-          go-version: "1.26.10"
+          go-version: "1.27.3"
           cache-dependency-path: .github/plugincheck/go.sum
 
       # The same checks as the Traefik Plugin Catalog, then a load with Yaegi v2

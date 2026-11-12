@@ -94,5 +94,5 @@ Run it locally:
 cd .github/plugincheck && go run . -dir ../.. -request /
 ```
 
-The Go version must match the AOT copies of the `yaegi/v2` version in `.github/plugincheck/go.mod` (today Go 1.26.10 or Go 1.27.3).
+The Go version must match the AOT copies of the `yaegi/v2` version in `.github/plugincheck/go.mod` (today Go 1.27.3).
 When you update `yaegi/v2`, update the Go version of the job too.

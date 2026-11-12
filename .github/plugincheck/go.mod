@@ -1,6 +1,6 @@
 module plugincheck
 
-go 1.26.0
+go 1.27.0
 
 require (
 	github.com/mitchellh/mapstructure v1.5.1-0.20231216201459-8508981c8b6c
