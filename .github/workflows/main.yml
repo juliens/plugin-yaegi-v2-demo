@@ -21,9 +21,9 @@ jobs:
           go-version: stable
 
       - name: Lint
-        uses: golangci/golangci-lint-action@v8
+        uses: golangci/golangci-lint-action@v9
         with:
-          version: v2.6
+          version: v2.15
 
       - name: Test
         run: go test -v -race ./...
