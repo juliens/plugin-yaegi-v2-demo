@@ -1,0 +1,53 @@
+name: Main
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Lint and test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-go@v6
+        with:
+          go-version: stable
+
+      - name: Lint
+        uses: golangci/golangci-lint-action@v8
+        with:
+          version: v2.6
+
+      - name: Test
+        run: go test -v -race ./...
+
+      - name: Check go.mod
+        run: |
+          go mod tidy
+          git diff --exit-code go.mod
+
+  yaegi:
+    name: Run with Yaegi v2
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      # The AOT copies of Yaegi v2 are made with one Go patch release:
+      # use the version of the yaegi/v2 module set in .github/plugincheck/go.mod.
+      - uses: actions/setup-go@v6
+        with:
+          go-version: "1.26.10"
+          cache-dependency-path: .github/plugincheck/go.sum
+
+      # The same checks as the Traefik Plugin Catalog, then a load with Yaegi v2
+      # and a request to the middleware, as Traefik does.
+      - name: Check the plugin
+        working-directory: .github/plugincheck
+        run: go run . -dir ../.. -repo "${{ github.repository }}" -request /

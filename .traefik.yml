@@ -1,0 +1,13 @@
+displayName: Yaegi v2 Demo
+type: middleware
+# Run this plugin with Yaegi v2. Without this line, Traefik uses Yaegi v1.
+yaegiVersion: v2
+
+import: github.com/juliens/plugin-yaegi-v2-demo
+basePkg: plugindemo
+
+summary: Example of plugin run by Yaegi v2. It removes the request headers that start with the configured prefixes.
+
+testData:
+  prefixes:
+    - X-Internal-
