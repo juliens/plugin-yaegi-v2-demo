@@ -24,12 +24,12 @@ Yaegi v2 uses the Go type checker, so it runs it as compiled Go does.
 
 ## Ask for Yaegi v2
 
-Add `yaegiVersion: v2` to the manifest [`.traefik.yml`](.traefik.yml):
+Add `runtimeVersion: v2` to the manifest [`.traefik.yml`](.traefik.yml):
 
 ```yaml
 displayName: Yaegi v2 Demo
 type: middleware
-yaegiVersion: v2
+runtimeVersion: v2
 import: github.com/juliens/plugin-yaegi-v2-demo
 basePkg: plugindemo
 ```
@@ -81,7 +81,7 @@ The second job runs [`.github/plugincheck`](.github/plugincheck).
 It is a separate Go module, because the plugin itself must not depend on Yaegi or Traefik.
 It checks:
 
-- the manifest: type, `import`, `displayName`, `summary`, `testData`, and `yaegiVersion: v2`;
+- the manifest: type, `import`, `displayName`, `summary`, `testData`, and `runtimeVersion: v2`;
 - `go.mod`: no dependency on Yaegi or Traefik, and `import` matches the module name;
 - the module name matches the GitHub repository;
 - the plugin loads with Yaegi v2 (`host.Options()`, as Traefik);

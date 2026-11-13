@@ -39,16 +39,16 @@ const (
 
 // Manifest is the content of .traefik.yml.
 type Manifest struct {
-	DisplayName   string         `yaml:"displayName"`
-	Type          string         `yaml:"type"`
-	Runtime       string         `yaml:"runtime"`
-	Import        string         `yaml:"import"`
-	BasePkg       string         `yaml:"basePkg"`
-	Compatibility string         `yaml:"compatibility"`
-	Summary       string         `yaml:"summary"`
-	UseUnsafe     bool           `yaml:"useUnsafe"`
-	TestData      map[string]any `yaml:"testData"`
-	YaegiVersion  string         `yaml:"yaegiVersion"`
+	DisplayName    string         `yaml:"displayName"`
+	Type           string         `yaml:"type"`
+	Runtime        string         `yaml:"runtime"`
+	Import         string         `yaml:"import"`
+	BasePkg        string         `yaml:"basePkg"`
+	Compatibility  string         `yaml:"compatibility"`
+	Summary        string         `yaml:"summary"`
+	UseUnsafe      bool           `yaml:"useUnsafe"`
+	TestData       map[string]any `yaml:"testData"`
+	RuntimeVersion string         `yaml:"runtimeVersion"`
 }
 
 func main() {
@@ -145,8 +145,8 @@ func readManifest(file string) (*Manifest, error) {
 		return nil, errors.New("missing Summary")
 	case m.TestData == nil:
 		return nil, errors.New("missing TestData")
-	case m.YaegiVersion != "v2":
-		return nil, fmt.Errorf("yaegiVersion must be v2 in the manifest, got %q", m.YaegiVersion)
+	case m.RuntimeVersion != "v2":
+		return nil, fmt.Errorf("runtimeVersion must be v2 in the manifest, got %q", m.RuntimeVersion)
 	}
 
 	return &m, nil

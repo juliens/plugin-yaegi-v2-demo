@@ -1,7 +1,7 @@
 displayName: Yaegi v2 Demo
 type: middleware
 # Run this plugin with Yaegi v2. Without this line, Traefik uses Yaegi v1.
-yaegiVersion: v2
+runtimeVersion: v2
 
 import: github.com/juliens/plugin-yaegi-v2-demo
 basePkg: plugindemo
