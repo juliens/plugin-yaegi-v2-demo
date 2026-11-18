@@ -3,7 +3,7 @@
 An example of Traefik middleware plugin run by [Yaegi v2](https://github.com/traefik/yaegi/tree/v2).
 Use it as a template for your own plugin.
 
-Yaegi v2 is experimental, and Traefik supports it only on a development branch for now.
+Yaegi v2 comes with Traefik v3.8. It is opt-in: Traefik uses it for a plugin that asks for it in its manifest.
 
 The middleware removes the request headers whose name starts with one of the configured prefixes.
 
